@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'public/dist': ['server-config.js']
+          'public/dist': ['server-config.js', 'server.js']
         }
       }
     },
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         separator: ';',
       },
       dist: {
-        src: ['server-config.js'],
+        src: ['server-config.js', 'server.js'],
         dest: '/public/dist/built.js',
       }
     },
