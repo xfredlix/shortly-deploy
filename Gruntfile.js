@@ -21,9 +21,9 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      my_target: {
+      myTarget: {
         files: {
-          'public/dist': ['server-config.js', 'server.js']
+          'public/dist/built.js': ['server-config.js', 'server.js']
         }
       }
     },
@@ -31,7 +31,8 @@ module.exports = function(grunt) {
     eslint: {
       target: [
         // Add list of files to lint here
-        '../*'
+        'server-config.js',
+        'server.js'
       ]
     },
 
@@ -41,7 +42,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['server-config.js', 'server.js'],
-        dest: '/public/dist/built.js',
+        dest: 'public/dist/built.js',
       }
     },
 
