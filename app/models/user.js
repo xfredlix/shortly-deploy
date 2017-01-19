@@ -2,7 +2,7 @@ var db = require('../config');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
 
-var User = db.Model.extend({
+var User = new db.user({
   tableName: 'users',
   hasTimestamps: true,
   initialize: function() {
@@ -22,4 +22,9 @@ var User = db.Model.extend({
   }
 });
 
+User.save( (err) => {
+  if (err) {
+    return handleError(err);
+  }
+});
 module.exports = User;

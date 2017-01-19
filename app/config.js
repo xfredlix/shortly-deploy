@@ -41,22 +41,30 @@ var knex = require('knex')({
 // module.exports = db;
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/my_database');
-
 var Schema = mongoose.Schema;
-// var ObjectId = Schema.ObjectId;
+var db = mongoose.connect('mongodb://localhost/my_database');
 
-var urls = new Schema({
+var urlsSchema = new Schema({
   url: String,
   baseUrl: String,
   code: String,
   title: String,
-  visits: Integer,
+  visits: Number,
   timestaps: {type: Date, default: Date.now}
-});
+}, {collection: 'url'});
+var Urls = mongoose.model('urls', urlsSchema);
 
-var users = new Schema({
+var usersSchema = new Schema({
   username: String,
   password: String,
   timestaps: {type: Date, default: Date.now}
 });
+var Users = mongoose.model('users', usersSchema);
+
+console.log('Users', usersSchema);
+console.log('URLS', urlsSchema);
+// console.log(mongoDB);
+module.exports.url = Urls;
+module.exports.user = Users;
+module.exports.urls = urlsSchema;
+module.exports.users = usersSchema;
