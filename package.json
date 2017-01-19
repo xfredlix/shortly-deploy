@@ -11,7 +11,7 @@
   "scripts": {
     "start": "npm run lint && grunt upload",
     "test": "grunt test",
-    "lint": "grunt build && grunt uglify && grunt concat && eslint ./"
+    "lint": "grunt build && grunt uglify && grunt concat && grunt mochaTest && eslint ./"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
