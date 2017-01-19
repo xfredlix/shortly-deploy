@@ -16,17 +16,33 @@ module.exports = function(grunt) {
 
     nodemon: {
       dev: {
-        script: 'node server.js' // CHANGE
+        script: 'server.js'
       }
     },
 
     uglify: {
+      my_target: {
+        files: {
+          'public/dist': ['server-config.js']
+        }
+      }
     },
 
     eslint: {
       target: [
         // Add list of files to lint here
+        '../*'
       ]
+    },
+
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['server-config.js'],
+        dest: '/public/dist/built.js',
+      }
     },
 
     cssmin: {
