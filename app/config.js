@@ -22,13 +22,13 @@ var urlsSchema = new Schema({
   timestaps: {type: Date, default: Date.now}
 });
 
-// urlsSchema.pre('save', function(next) {
-//   var shasum = crypto.createHash('sha1');
-//   console.log('this.url ====== ', this);
-//   shasum.update(this.url);
-//   this.code = shasum.digest('hex').slice(0, 5);
-//   next();
-// });
+urlsSchema.pre('save', function(next) {
+  var shasum = crypto.createHash('sha1');
+  console.log('this.url ====== ', this);
+  shasum.update(this.url);
+  this.code = shasum.digest('hex').slice(0, 5);
+  next();
+});
 
 var Urls = mongoose.model('urls', urlsSchema);
 
