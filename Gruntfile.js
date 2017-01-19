@@ -105,9 +105,17 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('deploy', [
+  grunt.registerTask('deploy', (n) => {
+
     // add your deploy tasks here
-  ]);
+    // "grunt build && grunt uglify && grunt concat && grunt mochaTest && eslint && grunt upload./"
+    if (grunt.option('prod')) {
+      grunt.task.run(['build', 'upload']);
+    } else {
+      grunt.task.run(['build', 'uglify', 'concat', 'mochaTest', 'upload']); 
+    }
+
+  });
 
 
 };
