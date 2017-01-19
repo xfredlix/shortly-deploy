@@ -1,12 +1,12 @@
 var db = require('../config');
 var crypto = require('crypto');
 
-var Link = new db.url;
+var Link = db.url;
 
-Link.save( (err) => {
-  if (err) {
-    return handleError(err);
-  }
-});
+// Link.save( (err) => {
+//   if (err) {
+//     return handleError(err);
+//   }
+// });
 
 module.exports = Link;
