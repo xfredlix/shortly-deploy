@@ -35,14 +35,14 @@ var usersSchema = new Schema({
 });
 
 usersSchema.methods.comparePassword = function(attemptedPassword, callback) {
-  bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
+  bcrypt.compare(attemptedPassword, this.password, function(err, isMatch) {
     callback(isMatch);
   });
 };
 
 usersSchema.post('init', function () {
   var cipher = Promise.promisify(bcrypt.hash);
-  cipher(this.password, null, null).bind(this)
+  return cipher(this.password, null, null).bind(this)
     .then(function(hash) {
       this.password = hash;
     });
