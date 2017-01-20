@@ -29,7 +29,7 @@ urlsSchema.post('validate', function() {
 var Urls = mongoose.model('urls', urlsSchema);
 
 var usersSchema = new Schema({
-  username: String,
+  username: { type: String, required: true, index: { unique: true } },
   password: String,
   timestaps: {type: Date, default: Date.now}
 });
